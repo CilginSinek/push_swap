@@ -13,12 +13,12 @@
 #include "push_swap.h"
 
 /**
- * @brief swaper
+ * @brief rrotater
  * 'a' for "ra"
  * 'b' for "rb"
  * 'a'+'b' for "ra rb"
  */
-void    rotater(t_list **head, int i)
+void    rrotater(t_list **head, int i)
 {
     t_list *tmp;
     void *content_holder;
@@ -37,9 +37,31 @@ void    rotater(t_list **head, int i)
         ft_putstr("ra rb\n");
 }
 
-void rotater_s(t_list **head_a, t_list **head_b)
+void rrotater_s(t_list **head_a, t_list **head_b)
 {
-    rotater(head_a, 0);
-    rotater(head_b, 'a' + 'b');
-    
+    rrotater(head_a, 0);
+    rrotater(head_b, 'a' + 'b');
+
+}
+
+void router(t_list **head, int i)
+{
+    t_list *tmp;
+
+    tmp = *head;
+    ft_lstadd_back(head, tmp);
+    *head = (*head)->next;
+    tmp->next = NULL;
+    if (i == 'a')
+        ft_putstr("ra\n");
+    if (i == 'b')
+        ft_putstr("rb\n");
+    if (i == 'a' + 'b')
+        ft_putstr("ra rb\n");
+}
+
+void router_s(t_list **head_a, t_list **head_b)
+{
+    router(head_a, 0);
+    router(head_b, 'a' + 'b');
 }
