@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 10:50:52 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/15 12:51:22 by iduman           ###   ########.fr       */
+/*   Updated: 2025/07/18 18:59:36 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	swap_s(t_list **head_a, t_list **head_b)
 void	putter(t_list **giver_list, t_list **taker_list, int i)
 {
     t_list *holder1;
-    t_list *holder2;
 
     if(ft_lstsize(*giver_list) == 0)
         return ;

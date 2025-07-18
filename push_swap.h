@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:45:56 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/18 18:39:55 by iduman           ###   ########.fr       */
+/*   Updated: 2025/07/18 19:00:05 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s);
 void	ft_putstr(char *s);

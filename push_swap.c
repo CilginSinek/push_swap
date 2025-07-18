@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:46:08 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/18 18:39:03 by iduman           ###   ########.fr       */
+/*   Updated: 2025/07/18 19:03:24 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,22 @@ void indexer(t_list *head)
         return;
     while (temp_index != NULL)
     {
-            while (current->next != NULL)
+
+        while (current->next != NULL)
+        {
+
+            current = temp_index;
+            index = 0;
+            while (current != NULL)
             {
-                current = temp_index;
-                index = 0;
-                while (current != NULL)
-                {
-                    if (*(int *)(current->content) < *(int *)(temp_index->content))
-                        index++;
-                    current = current->next;
-                }
-                temp_index->index = index;
-                temp_index = temp_index->next;
+                printf("Current content: %d\n", *(int *)(current->content));
+                if (*(int *)(current->content) < *(int *)(temp_index->content))
+                    index++;
+                current = current->next;
             }
+            temp_index->index = index;
+            temp_index = temp_index->next;
+        }
     }
     current = head;
 }
@@ -97,11 +100,8 @@ int main(int argc, char const *argv[])
     if (!head_a)
         return (ft_putstr("Error\n"), 1);
     head_b = NULL;
-    indexer(head_a);
-    
 
-    
-        
-    
+    indexer(head_a);
+        printf("List created successfully.\n");
     return 0;
 }
