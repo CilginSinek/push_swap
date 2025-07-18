@@ -65,3 +65,19 @@ void router_s(t_list **head_a, t_list **head_b)
     router(head_a, 0);
     router(head_b, 'a' + 'b');
 }
+
+void	ft_lstiter(t_list *lst, void (*f)(size_t))
+{
+	t_list	*mylst;
+
+	if (!lst || !f)
+		return ;
+	mylst = lst;
+	while (1)
+	{
+		f(mylst->index);
+		if (mylst->next == NULL)
+			return ;
+		mylst = mylst->next;
+	}
+}

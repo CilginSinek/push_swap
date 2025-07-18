@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:45:56 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/15 11:56:45 by iduman           ###   ########.fr       */
+/*   Updated: 2025/07/18 18:39:55 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+size_t	ft_strlen(const char *s);
 void	ft_putstr(char *s);
+int	ft_isdigit(int c);
+int	ft_atoi(const char *str);
+void	*ft_calloc(size_t nmemb, size_t size);
+void    *memintset(void *ptr, int c);
 
 typedef struct s_list
 {
     void *content;
+    size_t index;
+    size_t pos;
+    size_t target_pos;
+    size_t cost_b;
+    size_t cost_a;
+    size_t cost_ab;
     struct s_list *next;
 }   t_list;
 
@@ -31,6 +42,7 @@ t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
+void		ft_lstiter(t_list *lst, void (*f)(size_t));
 
 
 #endif
