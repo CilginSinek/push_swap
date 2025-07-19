@@ -29,3 +29,38 @@ void    *memintset(void *ptr, int c)
     }
     return (ptr);
 }
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
+	size_t	n;
+	n = nmemb * size;
+	int i;
+
+	i = 0;
+	ptr = malloc(n);
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	while (n--)
+		((unsigned char *)ptr)[i++] = '\0';
+	return ((void *)ptr);
+}
+
+void ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
+void ft_putnbr(long int n)
+{
+    if (n < 0)
+    {
+        ft_putstr("-");
+        n = -n;
+    }
+    if (n >= 10)
+        ft_putnbr(n / 10);
+    ft_putchar((n % 10) + '0');
+}

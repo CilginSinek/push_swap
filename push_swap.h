@@ -23,6 +23,8 @@ int	ft_isdigit(int c);
 int	ft_atoi(const char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
 void    *memintset(void *ptr, int c);
+void ft_putnbr(long int n);
+void ft_putchar(char c);
 
 typedef struct s_list
 {
@@ -43,7 +45,7 @@ t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
-void		ft_lstiter(t_list *lst, void (*f)(size_t));
+void		ft_lstiter(t_list *lst, void (*f)(t_list *));
 
 
 #endif

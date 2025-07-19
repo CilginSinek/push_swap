@@ -53,44 +53,40 @@ t_list *create_list(char const *argv[])
     return (head);
 }
 
+/**
+ * @brief Bubble sort the list
+ */
 void indexer(t_list *head)
 {
     t_list *current;
-    t_list *temp_index;
-    size_t index;
+    t_list *other;
+    size_t myindex;
 
-    index = 1;
-    temp_index = 0;
     current = head;
-    temp_index = head;
-    if(current == NULL)
-        return;
-    while (temp_index != NULL)
+    while (current)
     {
-
-        while (current->next != NULL)
+        myindex = 1;
+        other = head;
+        while (other)
         {
-
-            current = temp_index;
-            index = 0;
-            while (current != NULL)
-            {
-                printf("Current content: %d\n", *(int *)(current->content));
-                if (*(int *)(current->content) < *(int *)(temp_index->content))
-                    index++;
-                current = current->next;
-            }
-            temp_index->index = index;
-            temp_index = temp_index->next;
+            if (*(int *)(other->content) < *(int *)(current->content))
+                myindex++;
+            other = other->next;
         }
+        current->index = myindex;
+        current = current->next;
     }
-    current = head;
+}
+
+void print_list(t_list *node)
+{
+    ft_putnbr((node->index));
+    ft_putchar('\n');
 }
 
 int main(int argc, char const *argv[])
 {
     t_list *head_a;
-    t_list *head_b;
 
     if (argc < 2)
         return (ft_putstr("Error\n"), 1);
@@ -99,9 +95,8 @@ int main(int argc, char const *argv[])
     head_a = create_list(argv + 1);
     if (!head_a)
         return (ft_putstr("Error\n"), 1);
-    head_b = NULL;
 
     indexer(head_a);
-        printf("List created successfully.\n");
+    ft_lstiter(head_a, &print_list);
     return 0;
 }

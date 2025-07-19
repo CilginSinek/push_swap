@@ -68,21 +68,3 @@ int	ft_atoi(const char *str)
 	}
 	return (result * a);
 }
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*ptr;
-	size_t	n;
-	n = nmemb * size;
-	int i;
-
-	i = 0;
-	ptr = malloc(n);
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-	while (n--)
-		((unsigned char *)ptr)[i++] = '\0';
-	return ((void *)ptr);
-}

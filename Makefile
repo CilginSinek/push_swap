@@ -13,7 +13,7 @@ all: $(NAME)
 
 $(NAME):$(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-	@echo "Server compiled successfully."
+	@echo "push_swap compiled successfully."
 
 clean:
 	$(RM) $(OBJ)
