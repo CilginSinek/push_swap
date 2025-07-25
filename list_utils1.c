@@ -1,87 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils1.c                                      :+:      :+:    :+:   */
+/*   list_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 10:50:52 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/18 18:59:36 by iduman           ###   ########.fr       */
+/*   Created: 2025/07/15 12:23:46 by iduman            #+#    #+#             */
+/*   Updated: 2025/07/15 12:53:46 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstlast(t_list *lst)
-{
-	t_list	*mylst;
-
-	if (!lst)
-		return (NULL);
-	mylst = lst;
-	while (1)
-	{
-		if (!mylst->next)
-			return (mylst);
-		mylst = mylst->next;
-	}
-}
-
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
-}
-
 /**
- * @brief swaper
- * 'a' for "sa"
- * 'b' for "as"
- * 'a'+'b' for "sa as"
+ * @brief rrotater
+ * 'a' for "ra"
+ * 'b' for "rb"
+ * 'a'+'b' for "ra rb"
  */
-void	swap(t_list **head, int i)
+void	rrotater(t_list **head, int i)
 {
-    t_list *tmp;
+	t_list	*tmp;
+	void	*content_holder;
 
-    if(ft_lstsize(*head) < 2)
-        return ;
-    tmp = (*head)->next;
-    (*head)->next = tmp->next;
-    tmp->next = *head;
-    *head = tmp;
-    if (i == 'a')
-        ft_putstr("sa\n");
-    if (i == 'b')
-        ft_putstr("as\n");
-    if (i == 'a' + 'b')
-        ft_putstr("sa as\n");
+	tmp = ft_lstlast(*head);
+	content_holder = tmp->content;
+	free(tmp);
+	tmp = NULL;
+	tmp = ft_lstnew(content_holder);
+	ft_lstadd_front(head, tmp);
+	if (i == 'a')
+		ft_putstr_fd("ra\n", 1);
+	if (i == 'b')
+		ft_putstr_fd("rb\n", 1);
+	if (i == 'a' + 'b')
+		ft_putstr_fd("ra rb\n", 1);
 }
 
-void	swap_s(t_list **head_a, t_list **head_b)
+void	rrotater_s(t_list **head_a, t_list **head_b)
 {
-    swap(head_a, 0);
-    swap(head_b, 'a' + 'b');
+	rrotater(head_a, 0);
+	rrotater(head_b, 'a' + 'b');
 }
 
-/**
- * @brief swaper
- * 'a' for "pa"
- * 'b' for "pb"
- */
-void	putter(t_list **giver_list, t_list **taker_list, int i)
+void	router(t_list **head, int i)
 {
-    t_list *holder1;
+	t_list	*tmp;
 
-    if(ft_lstsize(*giver_list) == 0)
-        return ;
-    holder1 = (*giver_list)->next;
-    (*giver_list)->next = *taker_list;
-    *taker_list = *giver_list;
-    *giver_list = holder1;
-    if (i == 'a')
-        ft_putstr("pa\n");
-    if (i == 'b')
-        ft_putstr("pb\n");
+	tmp = *head;
+	ft_lstadd_back(head, tmp);
+	*head = (*head)->next;
+	tmp->next = NULL;
+	if (i == 'a')
+		ft_putstr_fd("ra\n", 1);
+	if (i == 'b')
+		ft_putstr_fd("rb\n", 1);
+	if (i == 'a' + 'b')
+		ft_putstr_fd("ra rb\n", 1);
+}
+
+void	router_s(t_list **head_a, t_list **head_b)
+{
+	router(head_a, 0);
+	router(head_b, 'a' + 'b');
 }

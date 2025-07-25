@@ -3,68 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 11:53:08 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/18 18:41:12 by iduman           ###   ########.fr       */
+/*   Created: 2025/07/24 19:17:10 by iduman            #+#    #+#             */
+/*   Updated: 2025/07/24 19:17:10 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	ft_strlen(const char *s)
+static int	is_valid_number(const char *str)
 {
-	size_t	c;
+	int	i;
 
-	c = 0;
-	while (*s++)
-		c++;
-	return (c);
+	i = 0;
+	if (!str || !str[0])
+		return (0);
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-void	ft_putstr(char *s)
+static int	is_duplicate(long *arr, int count, long val)
 {
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
+	while (count--)
+	{
+		if (arr[count] == val)
+			return (1);
+	}
 	return (0);
 }
 
-static int	strlenspc(const char *str)
+void	ft_free_split(char **arr)
 {
-	int	len;
+	int	i;
 
-	len = 0;
-	while (str[len] == ' ' || (str[len] >= 9 && str[len] <= 13))
-		len++;
-	return (len);
+	i = 0;
+	while (arr && arr[i])
+		free(arr[i++]);
+	free(arr);
 }
 
-int	ft_atoi(const char *str)
+void	*ft_realloc(void *ptr, size_t new_size)
 {
-	int			result;
-	int			i;
-	signed char	a;
+	void	*new_ptr;
 
-	result = 0;
-	i = 0 + strlenspc(str);
-	a = 1;
-	if (str[i] == '+' || str[i] == '-')
+	if (!ptr)
+		return (malloc(new_size));
+	if (new_size == 0)
 	{
-		if (str[i] == '-')
-			a = -1;
-		i++;
+		free(ptr);
+		return (NULL);
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	new_ptr = malloc(new_size);
+	if (!new_ptr)
+		return (NULL);
+	ft_memcpy(new_ptr, ptr, new_size);
+	free(ptr);
+	return (new_ptr);
+}
+
+int	ft_health_helper(char **split, long **ns, long int *cap, long int *count)
+{
+	long	num;
+	long	*tmp;
+	while (*split)
 	{
-		result = result * 10 + (str[i] - '0');
-		i++;
+		if (!is_valid_number(*split))
+			return (ft_free_split(split), 0);
+		num = ft_atol(*split);
+		if (num < INT_MIN || num > INT_MAX)
+			return (ft_free_split(split), 0);
+		if (is_duplicate(*ns, *count, num))
+			return (ft_free_split(split), 0);
+		if (*count >= *cap)
+		{
+			*cap *= 2;
+			tmp = (long *)ft_realloc(*ns, sizeof(long) * (*cap));
+			if (!tmp)
+				return (ft_free_split(split), 0);
+			*ns = tmp;
+		}
+		(*ns)[*count] = num;
+		(*count)++;
+		split++;
 	}
-	return (result * a);
+	return (1);
 }

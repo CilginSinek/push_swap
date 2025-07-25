@@ -1,84 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   list_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 09:52:13 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/15 10:58:57 by iduman           ###   ########.fr       */
+/*   Created: 2025/07/15 10:50:52 by iduman            #+#    #+#             */
+/*   Updated: 2025/07/18 18:59:36 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+/**
+ * @brief swaper
+ * 'a' for "sa"
+ * 'b' for "as"
+ * 'a'+'b' for "sa as"
+ */
+void	swap(t_list **head, int i)
 {
-	t_list	*new_list;
+	t_list	*tmp;
 
-	new_list = (t_list *)malloc(sizeof(t_list) * 1);
-	if (!new_list)
-		return ((t_list *) NULL);
-	new_list->content = content;
-	new_list->next = NULL;
-	return (new_list);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*last;
-
-	if (!*lst)
-	{
-		*lst = new;
+	if (ft_lstsize(*head) < 2)
 		return ;
-	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	tmp = (*head)->next;
+	(*head)->next = tmp->next;
+	tmp->next = *head;
+	*head = tmp;
+	if (i == 'a')
+		ft_putstr_fd("sa\n", 1);
+	if (i == 'b')
+		ft_putstr_fd("as\n", 1);
+	if (i == 'a' + 'b')
+		ft_putstr_fd("sa as\n", 1);
 }
 
-int	ft_lstsize(t_list *lst)
+void	swap_s(t_list **head_a, t_list **head_b)
 {
-	int		i;
-	t_list	*mylst;
-
-	if (!lst)
-		return (0);
-	i = 0;
-	mylst = lst;
-	while (1)
-	{
-		if (!mylst->next)
-			return (i + 1);
-		i++;
-		mylst = mylst->next;
-	}
+	swap(head_a, 0);
+	swap(head_b, 'a' + 'b');
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+/**
+ * @brief swaper
+ * 'a' for "pa"
+ * 'b' for "pb"
+ */
+void	putter(t_list **giver_list, t_list **taker_list, int i)
 {
-	new->next = *lst;
-	*lst = new;
-}
+	t_list	*holder1;
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list		*mylist;
-	t_list		tmp;
-
-	if (!*lst || !del)
+	if (ft_lstsize(*giver_list) == 0)
 		return ;
-	mylist = *lst;
-	while (1)
-	{
-		tmp = *mylist;
-		del(mylist->content);
-		free(mylist);
-		if (!tmp.next)
-		{
-			*lst = NULL;
-			return ;
-		}
-		mylist = tmp.next;
-	}
+	holder1 = (*giver_list)->next;
+	(*giver_list)->next = *taker_list;
+	*taker_list = *giver_list;
+	*giver_list = holder1;
+	if (i == 'a')
+		ft_putstr_fd("pa\n", 1);
+	if (i == 'b')
+		ft_putstr_fd("pb\n", 1);
 }
