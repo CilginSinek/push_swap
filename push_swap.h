@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:45:56 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/18 19:00:05 by iduman           ###   ########.fr       */
+/*   Updated: 2025/07/27 17:03:59 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #  define INT_MIN -2147483648
 # endif
 
+char	**ft_split_charset(const char *s, const char *charset);
 void	*ft_memdup(const void *src, size_t n);
 void	ft_free_split(char **arr);
 void	*ft_realloc(void *ptr, size_t new_size);

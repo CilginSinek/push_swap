@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:46:08 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/18 19:03:24 by iduman           ###   ########.fr       */
+/*   Updated: 2025/07/27 17:04:45 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,11 @@ int	is_healthy(const char *argv[], t_list **head)
 		return (0);
 	while (*argv)
 	{
-
-		split = ft_split(*argv, ' ');
+		split = ft_split_charset(*argv, " \t\n\v\f\r");
 		if (!split)
-			return (free(numbers), 0);
+			return (free(numbers), ft_free_split(split), 0);
 		if (!ft_health_helper(split, &numbers, &cap, &count))
-			return (free(numbers), 0);
+			return (free(numbers), ft_free_split(split), 0);
 		ft_free_split(split);
 		argv++;
 	}

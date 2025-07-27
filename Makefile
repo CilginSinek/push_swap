@@ -47,6 +47,7 @@ SRC = list_utils.c \
 	  list_utils1.c \
 	  utils.c \
 	  utils1.c \
+	  split.c \
 	  push_swap.c 
 CC = cc
 OBJ = $(SRC:.c=.o)

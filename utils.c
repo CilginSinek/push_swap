@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 19:17:10 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/24 19:17:10 by iduman           ###   ########.fr       */
+/*   Updated: 2025/07/27 16:49:24 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,23 @@ int	ft_health_helper(char **split, long **ns, long int *cap, long int *count)
 {
 	long	num;
 	long	*tmp;
+
 	while (*split)
 	{
+
 		if (!is_valid_number(*split))
-			return (ft_free_split(split), 0);
+			return (0);			
 		num = ft_atol(*split);
 		if (num < INT_MIN || num > INT_MAX)
-			return (ft_free_split(split), 0);
+			return (0);
 		if (is_duplicate(*ns, *count, num))
-			return (ft_free_split(split), 0);
+			return (0);
 		if (*count >= *cap)
 		{
 			*cap *= 2;
 			tmp = (long *)ft_realloc(*ns, sizeof(long) * (*cap));
 			if (!tmp)
-				return (ft_free_split(split), 0);
+				return (0);
 			*ns = tmp;
 		}
 		(*ns)[*count] = num;
