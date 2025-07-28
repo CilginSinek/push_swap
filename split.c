@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/28 17:24:41 by iduman            #+#    #+#             */
+/*   Updated: 2025/07/28 17:24:41 by iduman           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	is_sep(char c, const char *charset)
@@ -7,9 +19,11 @@ static int	is_sep(char c, const char *charset)
 
 static size_t	word_counter(const char *s, const char *charset)
 {
-	size_t count = 0;
-	int in_word = 0;
+	size_t	count;
+	int		in_word;
 
+	count = 0;
+	in_word = 0;
 	while (*s)
 	{
 		if (!is_sep(*s, charset) && in_word == 0)
@@ -38,10 +52,12 @@ static int	check_memory(char **result, size_t word)
 
 static char	**setter(char **result, const char *s, const char *charset)
 {
-	size_t i = 0;
-	size_t word = 0;
-	size_t start;
+	size_t	i;
+	size_t	word;
+	size_t	start;
 
+	i = 0;
+	word = 0;
 	while (s[i])
 	{
 		if (!is_sep(s[i], charset))

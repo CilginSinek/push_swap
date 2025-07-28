@@ -78,9 +78,8 @@ int	ft_health_helper(char **split, long **ns, long int *cap, long int *count)
 
 	while (*split)
 	{
-
 		if (!is_valid_number(*split))
-			return (0);			
+			return (0);
 		num = ft_atol(*split);
 		if (num < INT_MIN || num > INT_MAX)
 			return (0);

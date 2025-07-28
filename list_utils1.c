@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+void	remove_last(t_list **head)
+{
+	t_list	*here;
+
+	if (ft_lstsize(*head) < 1)
+		return ;
+	if (ft_lstsize(*head) == 1)
+		*head = NULL;
+	else
+	{
+		here = *head;
+		while (here->next != NULL)
+			here = here->next;
+		here->next = NULL;
+	}
+}
+
 /**
  * @brief rrotater
  * 'a' for "ra"
@@ -21,14 +38,11 @@
 void	rrotater(t_list **head, int i)
 {
 	t_list	*tmp;
-	void	*content_holder;
 
 	tmp = ft_lstlast(*head);
-	content_holder = tmp->content;
-	free(tmp);
-	tmp = NULL;
-	tmp = ft_lstnew(content_holder);
-	ft_lstadd_front(head, tmp);
+	remove_last(head);
+	tmp->next = *head;
+	*head = tmp;
 	if (i == 'a')
 		ft_putstr_fd("ra\n", 1);
 	if (i == 'b')
@@ -43,7 +57,7 @@ void	rrotater_s(t_list **head_a, t_list **head_b)
 	rrotater(head_b, 'a' + 'b');
 }
 
-void	router(t_list **head, int i)
+void	rotater(t_list **head, int i)
 {
 	t_list	*tmp;
 
@@ -59,8 +73,8 @@ void	router(t_list **head, int i)
 		ft_putstr_fd("ra rb\n", 1);
 }
 
-void	router_s(t_list **head_a, t_list **head_b)
+void	rotater_s(t_list **head_a, t_list **head_b)
 {
-	router(head_a, 0);
-	router(head_b, 'a' + 'b');
+	rotater(head_a, 0);
+	rotater(head_b, 'a' + 'b');
 }

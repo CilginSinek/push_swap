@@ -47,7 +47,7 @@ void	swap_s(t_list **head_a, t_list **head_b)
  * 'a' for "pa"
  * 'b' for "pb"
  */
-void	putter(t_list **giver_list, t_list **taker_list, int i)
+void	put(t_list **giver_list, t_list **taker_list, int i)
 {
 	t_list	*holder1;
 
@@ -61,4 +61,42 @@ void	putter(t_list **giver_list, t_list **taker_list, int i)
 		ft_putstr_fd("pa\n", 1);
 	if (i == 'b')
 		ft_putstr_fd("pb\n", 1);
+}
+
+int	is_sorted(t_list *stack)
+{
+	while (stack && stack->next)
+	{
+		if (*(int *)stack->content > *(int *)stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+void	sort_three(t_list **a)
+{
+	int	first;
+	int	second;
+	int	third;
+
+	first = (*a)->index;
+	second = (*a)->next->index;
+	third = (*a)->next->next->index;
+	if (first > second && second < third && first < third)
+		swap(a, 'a');
+	else if (first > second && second > third)
+	{
+		swap(a, 'a');
+		rrotater(a, 'a');
+	}
+	else if (first > second && second < third && first > third)
+		rotater(a, 'a');
+	else if (first < second && second > third && first < third)
+	{
+		swap(a, 'a');
+		rotater(a, 'a');
+	}
+	else if (first < second && second > third && first > third)
+		rrotater(a, 'a');
 }

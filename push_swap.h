@@ -25,6 +25,18 @@ char	**ft_split_charset(const char *s, const char *charset);
 void	*ft_memdup(const void *src, size_t n);
 void	ft_free_split(char **arr);
 void	*ft_realloc(void *ptr, size_t new_size);
-int		ft_health_helper(char **split, long **numbers, long int *cap, long int *count);
+int		ft_health_helper(char **split, long **numbers,
+			long int *cap, long int *count);
 long	ft_atol(const char *str);
+
+void	swap(t_list **head, int i);
+void	swap_s(t_list **head_a, t_list **head_b);
+void	put(t_list **giver_list, t_list **taker_list, int i);
+void	rrotater(t_list **head, int i);
+void	rrotater_s(t_list **head_a, t_list **head_b);
+void	rotater(t_list **head, int i);
+void	rotater_s(t_list **head_a, t_list **head_b);
+int		is_sorted(t_list *stack);
+void	sort_three(t_list **head);
+
 #endif
