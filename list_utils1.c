@@ -15,17 +15,22 @@
 void	remove_last(t_list **head)
 {
 	t_list	*here;
+	t_list	*prev;
 
-	if (ft_lstsize(*head) < 1)
+	if (!*head)
 		return ;
-	if (ft_lstsize(*head) == 1)
+	if (!(*head)->next)
 		*head = NULL;
 	else
 	{
 		here = *head;
+		prev = NULL;
 		while (here->next != NULL)
+		{
+			prev = here;
 			here = here->next;
-		here->next = NULL;
+		}
+		prev->next = NULL;
 	}
 }
 
@@ -62,9 +67,9 @@ void	rotater(t_list **head, int i)
 	t_list	*tmp;
 
 	tmp = *head;
-	ft_lstadd_back(head, tmp);
 	*head = (*head)->next;
 	tmp->next = NULL;
+	ft_lstadd_back(head, tmp);
 	if (i == 'a')
 		ft_putstr_fd("ra\n", 1);
 	if (i == 'b')
