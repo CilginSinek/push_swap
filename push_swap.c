@@ -97,7 +97,7 @@ static void	indexer(t_list *head)
 
 static void	init_b(t_list **a, t_list **b)
 {
-	size_t	total;
+	int	total;
 
 	total = ft_lstsize(*a);
 	while (ft_lstsize(*a) > 3)

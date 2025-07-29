@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 15:32:25 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/24 19:12:52 by iduman           ###   ########.fr       */
+/*   Updated: 2025/07/29 23:17:45 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void		ft_putnbr_fd(int n, int fd);
 typedef struct s_list
 {
 	void			*content;
-	size_t			index;
-	size_t			pos;
-	size_t			target_pos;
-	size_t			cost_b;
-	size_t			cost_a;
-	size_t			cost_ab;
+	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_b;
+	int				cost_a;
+	int				cost_ab;
 	struct s_list	*next;
 }	t_list;
 
