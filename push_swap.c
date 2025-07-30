@@ -116,6 +116,16 @@ static void	init_b(t_list **a, t_list **b)
 	}
 }
 
+// void printf_list(t_list *head)
+// {
+// 	while (head)
+// 	{
+// 		printf("%d ", *(int *)(head->content));
+// 		head = head->next;
+// 	}
+// 	printf("\n");
+// }
+
 int	main(int argc, char const *argv[])
 {
 	t_list	*head_a;
@@ -129,6 +139,8 @@ int	main(int argc, char const *argv[])
 		return (ft_putstr_fd("Error\n", 1), 1);
 	indexer(head_a);
 	init_b(&head_a, &head_b);
+	list_functions(&head_a, &head_b);
+	//printf_list(head_a);
 	ft_lstclear(&head_a, free);
 	ft_lstclear(&head_b, free);
 	return (0);

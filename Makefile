@@ -45,6 +45,7 @@ LIBFTSRC = ./Libft/ft_atoi.c \
 			./Libft/ft_toupper.c
 SRC = list_utils.c \
 	  list_utils1.c \
+	  list_utils2.c \
 	  utils.c \
 	  utils1.c \
 	  split.c \

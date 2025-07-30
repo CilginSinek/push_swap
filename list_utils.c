@@ -31,9 +31,9 @@ void	swap(t_list **head, int i)
 	if (i == 'a')
 		ft_putstr_fd("sa\n", 1);
 	if (i == 'b')
-		ft_putstr_fd("as\n", 1);
+		ft_putstr_fd("sb\n", 1);
 	if (i == 'a' + 'b')
-		ft_putstr_fd("sa as\n", 1);
+		ft_putstr_fd("ss\n", 1);
 }
 
 void	swap_s(t_list **head_a, t_list **head_b)

@@ -49,11 +49,11 @@ void	rrotater(t_list **head, int i)
 	tmp->next = *head;
 	*head = tmp;
 	if (i == 'a')
-		ft_putstr_fd("ra\n", 1);
+		ft_putstr_fd("rra\n", 1);
 	if (i == 'b')
-		ft_putstr_fd("rb\n", 1);
+		ft_putstr_fd("rrb\n", 1);
 	if (i == 'a' + 'b')
-		ft_putstr_fd("ra rb\n", 1);
+		ft_putstr_fd("rrr\n", 1);
 }
 
 void	rrotater_s(t_list **head_a, t_list **head_b)
@@ -64,18 +64,20 @@ void	rrotater_s(t_list **head_a, t_list **head_b)
 
 void	rotater(t_list **head, int i)
 {
-	t_list	*tmp;
+    t_list	*tmp;
 
-	tmp = *head;
-	*head = (*head)->next;
-	tmp->next = NULL;
-	ft_lstadd_back(head, tmp);
+    if (!*head || !(*head)->next)
+        return ;
+    tmp = *head;
+    *head = (*head)->next;
+    tmp->next = NULL;
+    ft_lstadd_back(head, tmp);
 	if (i == 'a')
 		ft_putstr_fd("ra\n", 1);
 	if (i == 'b')
 		ft_putstr_fd("rb\n", 1);
 	if (i == 'a' + 'b')
-		ft_putstr_fd("ra rb\n", 1);
+		ft_putstr_fd("rr\n", 1);
 }
 
 void	rotater_s(t_list **head_a, t_list **head_b)

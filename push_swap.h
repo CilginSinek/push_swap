@@ -39,4 +39,5 @@ void	rotater_s(t_list **head_a, t_list **head_b);
 int		is_sorted(t_list *stack);
 void	sort_three(t_list **head);
 
+void list_functions(t_list **head_a, t_list **head_b);
 #endif
