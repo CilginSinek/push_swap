@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:24:41 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/28 17:24:41 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/15 21:29:44 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**ft_split_charset(const char *s, const char *charset)
 	if (!s || !charset)
 		return (NULL);
 	word_count = word_counter(s, charset);
-	result = (char **)malloc((word_count + 1) * sizeof(char *));
+	result = (char **)ft_calloc((word_count + 1), sizeof(char *));
 	if (!result)
 		return (NULL);
 	return (setter(result, s, charset));

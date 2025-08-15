@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils2.c                                      :+:      :+:    :+:   */
+/*   list_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:23:46 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/15 12:53:46 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/15 22:56:41 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ void	rrotater_s(t_list **head_a, t_list **head_b)
 
 void	rotater(t_list **head, int i)
 {
-    t_list	*tmp;
+	t_list	*tmp;
 
-    if (!*head || !(*head)->next)
-        return ;
-    tmp = *head;
-    *head = (*head)->next;
-    tmp->next = NULL;
-    ft_lstadd_back(head, tmp);
+	if (!*head || !(*head)->next)
+		return ;
+	tmp = *head;
+	*head = (*head)->next;
+	tmp->next = NULL;
+	ft_lstadd_back(head, tmp);
 	if (i == 'a')
 		ft_putstr_fd("ra\n", 1);
 	if (i == 'b')

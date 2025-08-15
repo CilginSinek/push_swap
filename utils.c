@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 19:17:10 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/27 16:49:24 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/15 23:11:51 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_free_split(char **arr)
 	free(arr);
 }
 
-void	*ft_realloc(void *ptr, size_t new_size)
+static void	*ft_realloc(void *ptr, size_t new_size)
 {
 	void	*new_ptr;
 

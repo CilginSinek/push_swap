@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:46:08 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/27 17:04:45 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/15 22:56:54 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	is_healthy(const char *argv[], t_list **head)
 	{
 		split = ft_split_charset(*argv, " \t\n\v\f\r");
 		if (!split)
-			return (free(numbers), ft_free_split(split), 0);
+			return (free(numbers), 0);
 		if (!ft_health_helper(split, &numbers, &cap, &count))
 			return (free(numbers), ft_free_split(split), 0);
 		ft_free_split(split);
@@ -95,37 +95,6 @@ static void	indexer(t_list *head)
 	}
 }
 
-static void	init_b(t_list **a, t_list **b)
-{
-	int	total;
-
-	total = ft_lstsize(*a);
-	while (ft_lstsize(*a) > 3)
-	{
-		if ((*a)->index <= total - 3)
-			put(a, b, 'b');
-		else
-			rotater(a, 'a');
-	}
-	if (!is_sorted(*a))
-	{
-		if (ft_lstsize(*a) == 2)
-			swap(a, 'a');
-		else if (ft_lstsize(*a) == 3)
-			sort_three(a);
-	}
-}
-
-// void printf_list(t_list *head)
-// {
-// 	while (head)
-// 	{
-// 		printf("%d ", *(int *)(head->content));
-// 		head = head->next;
-// 	}
-// 	printf("\n");
-// }
-
 int	main(int argc, char const *argv[])
 {
 	t_list	*head_a;
@@ -137,10 +106,10 @@ int	main(int argc, char const *argv[])
 		return (ft_putstr_fd("Error\n", 1), 1);
 	if (!is_healthy(argv + 1, &head_a))
 		return (ft_putstr_fd("Error\n", 1), 1);
+	if (is_sorted(head_a))
+		return (ft_lstclear(&head_a, free), 0);
 	indexer(head_a);
-	init_b(&head_a, &head_b);
 	list_functions(&head_a, &head_b);
-	//printf_list(head_a);
 	ft_lstclear(&head_a, free);
 	ft_lstclear(&head_b, free);
 	return (0);

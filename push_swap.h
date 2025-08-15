@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:45:56 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/27 17:03:59 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/15 23:11:58 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 char	**ft_split_charset(const char *s, const char *charset);
 void	*ft_memdup(const void *src, size_t n);
 void	ft_free_split(char **arr);
-void	*ft_realloc(void *ptr, size_t new_size);
 int		ft_health_helper(char **split, long **numbers,
 			long int *cap, long int *count);
 long	ft_atol(const char *str);
@@ -39,5 +38,7 @@ void	rotater_s(t_list **head_a, t_list **head_b);
 int		is_sorted(t_list *stack);
 void	sort_three(t_list **head);
 
-void list_functions(t_list **head_a, t_list **head_b);
+void	sort_five(t_list **head_a, t_list **head_b);
+void	list_functions(t_list **head_a, t_list **head_b);
+
 #endif
