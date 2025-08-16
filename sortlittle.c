@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 22:19:15 by iduman            #+#    #+#             */
-/*   Updated: 2025/08/16 14:18:48 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/16 14:32:00 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	replacer(t_list **head_a, int pos)
 	}
 }
 
-static void	push_min_to_b(t_list **head_a, t_list **head_b)
+static void	push_mins(t_list **head_a, t_list **head_b)
 {
 	replacer(head_a, where_min(*head_a));
 	put(head_a, head_b, 'b');
@@ -61,7 +61,7 @@ static void	push_min_to_b(t_list **head_a, t_list **head_b)
 void	sort_five(t_list **head_a, t_list **head_b)
 {
 	while (ft_lstsize(*head_a) > 3)
-		push_min_to_b(head_a, head_b);
+		push_mins(head_a, head_b);
 	sort_three(head_a);
 	while (*head_b)
 		put(head_b, head_a, 'a');
