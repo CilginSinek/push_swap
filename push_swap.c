@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:46:08 by iduman            #+#    #+#             */
-/*   Updated: 2025/08/16 03:01:41 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/16 15:45:43 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int argc, char const *argv[])
 	head_a = NULL;
 	head_b = NULL;
 	if (argc < 2)
-		return (ft_putstr_fd("Error\n", 1), 1);
+		return (1);
 	if (!is_healthy(argv + 1, &head_a))
 		return (ft_putstr_fd("Error\n", 1), 1);
 	if (is_sorted(head_a))
