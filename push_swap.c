@@ -6,13 +6,13 @@
 /*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:46:08 by iduman            #+#    #+#             */
-/*   Updated: 2025/08/15 22:56:54 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/16 03:01:41 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	*create_list(long *numbers, t_list **head)
+static void	*create_list(long *numbers, long count, t_list **head)
 {
 	t_list	*new_node;
 	t_list	*current;
@@ -22,7 +22,7 @@ static void	*create_list(long *numbers, t_list **head)
 		return (NULL);
 	*head = NULL;
 	i = 0;
-	while (numbers[i])
+	while (i < (size_t)count)
 	{
 		new_node = ft_lstnew(ft_memdup(numbers + i, sizeof(int)));
 		if (!new_node)
@@ -63,7 +63,7 @@ static int	is_healthy(const char *argv[], t_list **head)
 		ft_free_split(split);
 		argv++;
 	}
-	create_list(numbers, head);
+	create_list(numbers, count, head);
 	free(numbers);
 	if (!*head)
 		return (0);
@@ -82,7 +82,7 @@ static void	indexer(t_list *head)
 	current = head;
 	while (current)
 	{
-		myindex = 1;
+		myindex = 0;
 		other = head;
 		while (other)
 		{

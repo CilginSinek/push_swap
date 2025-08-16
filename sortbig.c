@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 22:57:06 by iduman            #+#    #+#             */
-/*   Updated: 2025/08/15 23:06:13 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/16 02:33:01 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ static void	radix_sort(t_list **head_a, t_list **head_b)
 	int	num;
 	int	i;
 	int	j;
+	int	size_a;
 
 	i = 0;
 	max_bits = get_max_bits(ft_lstsize(*head_a) - 1);
 	while (i < max_bits)
 	{
 		j = 0;
-		while (j < ft_lstsize(*head_a))
+		size_a = ft_lstsize(*head_a);
+		while (j < size_a)
 		{
 			num = (*head_a)->index;
 			if (((num >> i) & 1) == 0)

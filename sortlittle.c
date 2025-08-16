@@ -20,6 +20,7 @@ static int	find_min_pos(t_list *head)
 	t_list	*current;
 
 	min = head->index;
+	min_pos = 0;
 	pos = 0;
 	current = head;
 	while (current)
