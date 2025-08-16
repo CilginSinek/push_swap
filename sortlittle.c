@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sortlittle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 22:19:15 by iduman            #+#    #+#             */
-/*   Updated: 2025/08/15 22:19:15 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/16 14:18:48 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_min_pos(t_list *head)
+static int	where_min(t_list *head)
 {
 	int		pos;
 	int		min_pos;
@@ -36,7 +36,7 @@ static int	find_min_pos(t_list *head)
 	return (min_pos);
 }
 
-static void	move_pos_to_top(t_list **head_a, int pos)
+static void	replacer(t_list **head_a, int pos)
 {
 	int	size;
 
@@ -54,7 +54,7 @@ static void	move_pos_to_top(t_list **head_a, int pos)
 
 static void	push_min_to_b(t_list **head_a, t_list **head_b)
 {
-	move_pos_to_top(head_a, find_min_pos(*head_a));
+	replacer(head_a, where_min(*head_a));
 	put(head_a, head_b, 'b');
 }
 

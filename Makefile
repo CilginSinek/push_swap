@@ -28,7 +28,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) -C ./Libft fclean
-	@echo "All executables removed."
 
 re: fclean all
 
