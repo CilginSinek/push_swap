@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iduman <iduman@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 15:32:25 by iduman            #+#    #+#             */
-/*   Updated: 2025/07/29 23:17:45 by iduman           ###   ########.fr       */
+/*   Updated: 2025/08/18 15:49:46 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,6 @@ typedef struct s_list
 {
 	void			*content;
 	int				index;
-	int				pos;
-	int				target_pos;
-	int				cost_b;
-	int				cost_a;
-	int				cost_ab;
 	struct s_list	*next;
 }	t_list;
 
